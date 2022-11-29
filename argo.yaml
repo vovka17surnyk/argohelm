@@ -1,126 +1,136 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: prod-argo-application
-#   namespace: argocd
-#   annotations:
-#     notifications.argoproj.io/subscribe.on-sync-succeeded.slack: devops-internship-alerts
-#     notifications.argoproj.io/subscribe.on-sync-status-unknown.slack: devops-internship-alerts
-#     notifications.argoproj.io/subscribe.on-sync-failed.slack: devops-internship-alerts
-#     notifications.argoproj.io/subscribe.on-health-degraded.slack: devops-internship-alerts
-#     notifications.argoproj.io/subscribe.on-deployed.slack: devops-internship-alerts
-#     notifications.argoproj.io/subscribe.on-deleted.slack: devops-internship-alerts
-#     notifications.argoproj.io/subscribe.on-created.slack: devops-internship-alerts
-#     argocd-image-updater.argoproj.io/image-list: prod-argo-application=docker.io/vovka7surnyk/task-01
-#     argocd-image-updater.argoproj.io/prod-argo-application.allow-tags: regexp:^\d{1,2}\.\d{1,2}\.\d{1,2}$
-#     argocd-image-updater.argoproj.io/prod-argo-application.update-strategy: latest
-#     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
-#     argocd-image-updater.argoproj.io/git-branch: main
-#     argocd-image-updater.argoproj.io/prod-argo-application.force-update: "true"
-#     argocd-image-updater.argoproj.io/write-back-target: kustomization
-# spec:
-#   project: default
-#   source:
-#     repoURL: https://gitlab.com/v.surnyk/kubernetes-deployments-argocd.git
-#     targetRevision: main
-#     path: prod
-#   destination: 
-#     server: https://kubernetes.default.svc
-#     namespace: prod
+# # apiVersion: argoproj.io/v1alpha1
+# # kind: Application
+# # metadata:
+# #   name: prod-argo-application
+# #   namespace: argocd
+# #   annotations:
+# #     notifications.argoproj.io/subscribe.on-sync-succeeded.slack: devops-internship-alerts
+# #     notifications.argoproj.io/subscribe.on-sync-status-unknown.slack: devops-internship-alerts
+# #     notifications.argoproj.io/subscribe.on-sync-failed.slack: devops-internship-alerts
+# #     notifications.argoproj.io/subscribe.on-health-degraded.slack: devops-internship-alerts
+# #     notifications.argoproj.io/subscribe.on-deployed.slack: devops-internship-alerts
+# #     notifications.argoproj.io/subscribe.on-deleted.slack: devops-internship-alerts
+# #     notifications.argoproj.io/subscribe.on-created.slack: devops-internship-alerts
+# #     argocd-image-updater.argoproj.io/image-list: prod-argo-application=docker.io/vovka7surnyk/task-01
+# #     argocd-image-updater.argoproj.io/prod-argo-application.allow-tags: regexp:^\d{1,2}\.\d{1,2}\.\d{1,2}$
+# #     argocd-image-updater.argoproj.io/prod-argo-application.update-strategy: latest
+# #     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
+# #     argocd-image-updater.argoproj.io/git-branch: main
+# #     argocd-image-updater.argoproj.io/prod-argo-application.force-update: "true"
+# #     argocd-image-updater.argoproj.io/write-back-target: kustomization
+# # spec:
+# #   project: default
+# #   source:
+# #     repoURL: https://gitlab.com/v.surnyk/kubernetes-deployments-argocd.git
+# #     targetRevision: main
+# #     path: prod
+# #   destination: 
+# #     server: https://kubernetes.default.svc
+# #     namespace: prod
 
-#   syncPolicy:
-#     syncOptions:
-#     - CreateNamespace=true
+# #   syncPolicy:
+# #     syncOptions:
+# #     - CreateNamespace=true
 
-#     automated:
-#       selfHeal: true
-#       prune: true
+# #     automated:
+# #       selfHeal: true
+# #       prune: true
 
-# ---
+# # ---
 
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: dev-argo-application
-#   namespace: argocd
-#   annotations:
-#     notifications.argoproj.io/subscribe.on-sync-succeeded.slack: devops-internship-alerts
-#     argocd-image-updater.argoproj.io/image-list: dev-app=docker.io/vovka7surnyk/task-01
-#     argocd-image-updater.argoproj.io/dev-app.allow-tags: regexp:^\d{1,4}\-\d{1,2}\-\d{1,2}t\d{1,2}\-\d{1,2}\-\d{1,2}$
-#     argocd-image-updater.argoproj.io/dev-app.update-strategy: latest
-#     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
-#     argocd-image-updater.argoproj.io/git-branch: main
-#     argocd-image-updater.argoproj.io/dev-app.force-update: "true"
-#     argocd-image-updater.argoproj.io/write-back-target: kustomization
+# # apiVersion: argoproj.io/v1alpha1
+# # kind: Application
+# # metadata:
+# #   name: dev-argo-application
+# #   namespace: argocd
+# #   annotations:
+# #     notifications.argoproj.io/subscribe.on-sync-succeeded.slack: devops-internship-alerts
+# #     argocd-image-updater.argoproj.io/image-list: dev-app=docker.io/vovka7surnyk/task-01
+# #     argocd-image-updater.argoproj.io/dev-app.allow-tags: regexp:^\d{1,4}\-\d{1,2}\-\d{1,2}t\d{1,2}\-\d{1,2}\-\d{1,2}$
+# #     argocd-image-updater.argoproj.io/dev-app.update-strategy: latest
+# #     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
+# #     argocd-image-updater.argoproj.io/git-branch: main
+# #     argocd-image-updater.argoproj.io/dev-app.force-update: "true"
+# #     argocd-image-updater.argoproj.io/write-back-target: kustomization
     
-# spec:
-#   project: default
-#   source:
-#     repoURL: https://gitlab.com/v.surnyk/kubernetes-deployments-argocd.git
-#     targetRevision: HEAD
-#     path: dev
-#   destination: 
-#     server: https://kubernetes.default.svc
-#     namespace: dev-argo
+# # spec:
+# #   project: default
+# #   source:
+# #     repoURL: https://gitlab.com/v.surnyk/kubernetes-deployments-argocd.git
+# #     targetRevision: HEAD
+# #     path: dev
+# #   destination: 
+# #     server: https://kubernetes.default.svc
+# #     namespace: dev-argo
 
-#   syncPolicy:
-#     syncOptions:
-#     - CreateNamespace=true
+# #   syncPolicy:
+# #     syncOptions:
+# #     - CreateNamespace=true
 
-#     automated:
-#       selfHeal: true
-#       prune: true
+# #     automated:
+# #       selfHeal: true
+# #       prune: true
 
-# ---
+# # ---
+
+# # apiVersion: argoproj.io/v1alpha1
+# # kind: Application
+# # metadata:
+# #   name: stage-argo-application
+# #   namespace: argocd
+# #   annotations:
+# #     notifications.argoproj.io/subscribe.on-sync-succeeded.slack: devops-internship-alerts
+# #     argocd-image-updater.argoproj.io/image-list: stage-app=docker.io/vovka7surnyk/task-01
+# #     argocd-image-updater.argoproj.io/stage-app.allow-tags: regexp:^stg-\d{1,2}\.\d{1,2}\.\d{1,2}$
+# #     argocd-image-updater.argoproj.io/stage-app.update-strategy: latest
+# #     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
+# #     argocd-image-updater.argoproj.io/git-branch: main
+# #     argocd-image-updater.argoproj.io/stage-app.force-update: "true"
+# #     argocd-image-updater.argoproj.io/write-back-target: kustomization 
+# # spec:
+# #   project: default
+# #   source:
+# #     repoURL: https://gitlab.com/v.surnyk/kubernetes-deployments-argocd.git
+# #     targetRevision: HEAD
+# #     path: stage
+# #   destination: 
+# #     server: https://kubernetes.default.svc
+# #     namespace: stage-argo
+
+# #   syncPolicy:
+# #     syncOptions:
+# #     - CreateNamespace=true
+
+# #     automated:
+# #       selfHeal: true
+# #       prune: true
+
+
+
 
 # apiVersion: argoproj.io/v1alpha1
 # kind: Application
 # metadata:
-#   name: stage-argo-application
+#   name: sealed-secrets
 #   namespace: argocd
-#   annotations:
-#     notifications.argoproj.io/subscribe.on-sync-succeeded.slack: devops-internship-alerts
-#     argocd-image-updater.argoproj.io/image-list: stage-app=docker.io/vovka7surnyk/task-01
-#     argocd-image-updater.argoproj.io/stage-app.allow-tags: regexp:^stg-\d{1,2}\.\d{1,2}\.\d{1,2}$
-#     argocd-image-updater.argoproj.io/stage-app.update-strategy: latest
-#     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
-#     argocd-image-updater.argoproj.io/git-branch: main
-#     argocd-image-updater.argoproj.io/stage-app.force-update: "true"
-#     argocd-image-updater.argoproj.io/write-back-target: kustomization 
 # spec:
 #   project: default
 #   source:
-#     repoURL: https://gitlab.com/v.surnyk/kubernetes-deployments-argocd.git
-#     targetRevision: HEAD
-#     path: stage
-#   destination: 
-#     server: https://kubernetes.default.svc
-#     namespace: stage-argo
+#     chart: sealed-secrets
+#     repoURL: https://github.com/vovka17surnyk/argohelm.git
+#     targetRevision: 1.16.1
+#     helm:
+#       releaseName: sealed-secrets
+#   destination:
+#     server: "https://kubernetes.default.svc"
+#     namespace: kubeseal
 
-#   syncPolicy:
+#     syncPolicy:
 #     syncOptions:
 #     - CreateNamespace=true
 
 #     automated:
 #       selfHeal: true
 #       prune: true
-
-
-
-
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: sealed-secrets
-  namespace: argocd
-spec:
-  project: default
-  source:
-    chart: sealed-secrets
-    repoURL: https://github.com/vovka17surnyk/argohelm.git
-    targetRevision: 1.16.1
-    helm:
-      releaseName: sealed-secrets
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: kubeseal
+  
+  
