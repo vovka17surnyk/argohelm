@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: letsencrypt-production
+  namespace: stage-argo
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: v.surnyk@itoutposts.com
+    privateKeySecretRef:
+      name: letsencrypt-production
+    solvers:
+    - http01:
+        ingress:
+          class: nginx

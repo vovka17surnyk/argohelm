@@ -1,0 +1,33 @@
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: app
+  
+# ---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress7
+  labels:
+    name: argo-01-ingress
+  namespace: stage-argo
+  annotations:
+    cert-manager.io/issuer: letsencrypt-production
+spec:
+  rules:
+  - host: www.stg-argo-goapp.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: argo-01-service
+            port: 
+              number: 80
+  ingressClassName: nginx        
+  tls:
+    - hosts:
+      - www.stg-argo-goapp.com
+      secretName: argo-ingress-app-production3
