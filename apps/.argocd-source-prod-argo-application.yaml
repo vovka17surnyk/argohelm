@@ -1,7 +1,7 @@
 helm:
   parameters:
   - name: image.tag
-    value: stg-0.0.7
+    value: 0.0.7
     forcestring: true
   - name: image.name
     value: docker.io/vovka7surnyk/task-01
