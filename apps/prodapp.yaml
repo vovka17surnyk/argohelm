@@ -1,57 +1,57 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: prod-argo-application
-  namespace: default
-  annotations:
-    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: devops-internship-alerts
-    notifications.argoproj.io/subscribe.on-sync-status-unknown.slack: devops-internship-alerts
-    notifications.argoproj.io/subscribe.on-sync-failed.slack: devops-internship-alerts
-    notifications.argoproj.io/subscribe.on-health-degraded.slack: devops-internship-alerts
-    notifications.argoproj.io/subscribe.on-deployed.slack: devops-internship-alerts
-    notifications.argoproj.io/subscribe.on-deleted.slack: devops-internship-alerts
-    notifications.argoproj.io/subscribe.on-created.slack: devops-internship-alerts
-    argocd-image-updater.argoproj.io/image-list: prod-argo-application=docker.io/vovka7surnyk/task-01
-    argocd-image-updater.argoproj.io/prod-argo-application.allow-tags: regexp:^\d{1,2}\.\d{1,2}\.\d{1,2}$
-    argocd-image-updater.argoproj.io/prod-argo-application.update-strategy: latest
-    argocd-image-updater.argoproj.io/write-back-method: git:secret:default/git-creds
-    argocd-image-updater.argoproj.io/git-branch: HEAD
-    argocd-image-updater.argoproj.io/prod-argo-application.force-update: "true"
-    # argocd-image-updater.argoproj.io/write-back-target: kustomization
-spec:
-  project: default
-  source:
-    repoURL: https://github.com/vovka17surnyk/argohelm.git
-    targetRevision: HEAD
-    path: apps
-    helm:
-      parameters:
-      - name: image.tag
-        value: 0.0.7
-        # forcestring: true
-      - name: image.name
-        value: docker.io/vovka7surnyk/task-01
-        # forcestring: true  
-          # - name: environment
-        # value: staging
-        # - name: image.pullPolicy
-        # value: Always
-        # - forceString: true
-        # name: image.name
-        # value: 
-        # - forceString: true
-        # name: image.tag
-        # value: 1.1.1
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: prod-argo-application
+#   namespace: default
+#   annotations:
+#     notifications.argoproj.io/subscribe.on-sync-succeeded.slack: devops-internship-alerts
+#     notifications.argoproj.io/subscribe.on-sync-status-unknown.slack: devops-internship-alerts
+#     notifications.argoproj.io/subscribe.on-sync-failed.slack: devops-internship-alerts
+#     notifications.argoproj.io/subscribe.on-health-degraded.slack: devops-internship-alerts
+#     notifications.argoproj.io/subscribe.on-deployed.slack: devops-internship-alerts
+#     notifications.argoproj.io/subscribe.on-deleted.slack: devops-internship-alerts
+#     notifications.argoproj.io/subscribe.on-created.slack: devops-internship-alerts
+#     argocd-image-updater.argoproj.io/image-list: prod-argo-application=docker.io/vovka7surnyk/task-01
+#     argocd-image-updater.argoproj.io/prod-argo-application.allow-tags: regexp:^\d{1,2}\.\d{1,2}\.\d{1,2}$
+#     argocd-image-updater.argoproj.io/prod-argo-application.update-strategy: latest
+#     argocd-image-updater.argoproj.io/write-back-method: git:secret:default/git-creds
+#     argocd-image-updater.argoproj.io/git-branch: HEAD
+#     argocd-image-updater.argoproj.io/prod-argo-application.force-update: "true"
+#     # argocd-image-updater.argoproj.io/write-back-target: kustomization
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://github.com/vovka17surnyk/argohelm.git
+#     targetRevision: HEAD
+#     path: apps
+#     helm:
+#       parameters:
+#       - name: image.tag
+#         value: 0.0.7
+#         # forcestring: true
+#       - name: image.name
+#         value: docker.io/vovka7surnyk/task-01
+#         # forcestring: true  
+#           # - name: environment
+#         # value: staging
+#         # - name: image.pullPolicy
+#         # value: Always
+#         # - forceString: true
+#         # name: image.name
+#         # value: 
+#         # - forceString: true
+#         # name: image.tag
+#         # value: 1.1.1
 
-  destination: 
-    server: https://kubernetes.default.svc
-    namespace: prod
+#   destination: 
+#     server: https://kubernetes.default.svc
+#     namespace: prod
 
-  syncPolicy:
-    syncOptions:
-    - CreateNamespace=true
+#   syncPolicy:
+#     syncOptions:
+#     - CreateNamespace=true
 
-    automated:
-      selfHeal: true
-      prune: true
+#     automated:
+#       selfHeal: true
+#       prune: true
 
