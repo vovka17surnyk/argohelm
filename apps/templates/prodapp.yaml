@@ -23,7 +23,7 @@ spec:
   source:
     repoURL: https://github.com/vovka17surnyk/argohelm.git
     targetRevision: HEAD
-    path: ./apps/templates
+    path: ./apps/templates/prod
     helm:
         parameters:
           - name: image.tag
