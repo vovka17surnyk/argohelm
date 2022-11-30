@@ -25,6 +25,8 @@ spec:
     targetRevision: HEAD
     path: apps
     helm:
+      valueFiles:
+        - values.yaml
       values: |
         image:
           tag: stg-0.0.7
