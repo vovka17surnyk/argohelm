@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: prod-argo-application
-  namespace: argocd
+  namespace: default
   annotations:
     notifications.argoproj.io/subscribe.on-sync-succeeded.slack: devops-internship-alerts
     notifications.argoproj.io/subscribe.on-sync-status-unknown.slack: devops-internship-alerts
@@ -17,13 +17,28 @@ metadata:
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
     argocd-image-updater.argoproj.io/git-branch: main
     argocd-image-updater.argoproj.io/prod-argo-application.force-update: "true"
-    argocd-image-updater.argoproj.io/write-back-target: kustomization
+    # argocd-image-updater.argoproj.io/write-back-target: kustomization
 spec:
   project: default
   source:
     repoURL: https://github.com/vovka17surnyk/argohelm.git
     targetRevision: main
     path: prod
+    helm:
+        parameters:
+          - name: image.tag
+            value: 1.1.1    
+        # - name: environment
+        # value: staging
+        # - name: image.pullPolicy
+        # value: Always
+        # - forceString: true
+        # name: image.name
+        # value: 
+        # - forceString: true
+        # name: image.tag
+        # value: 1.1.1
+
   destination: 
     server: https://kubernetes.default.svc
     namespace: prod
@@ -35,3 +50,4 @@ spec:
     automated:
       selfHeal: true
       prune: true
+
