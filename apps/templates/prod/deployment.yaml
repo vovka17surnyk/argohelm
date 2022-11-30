@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: app-cont
-        image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         resources:
           limits:
             memory: "24Mi"
