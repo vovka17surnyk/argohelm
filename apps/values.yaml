@@ -4,8 +4,9 @@
 
 deployment:
   replicaCount: 3
-  container:
-    image: docker.io/vovka7surnyk/task-01
+  image:
+    repository: docker.io/vovka7surnyk/task-01
+    tag: 0.0.6
   ports:
     containerPort: 8080
 

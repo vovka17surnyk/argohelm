@@ -25,12 +25,14 @@ spec:
     targetRevision: HEAD
     path: apps
     helm:
-      parameters:
-      - name: image.tag
-        value: stg-0.0.7
-        # forcestring: true
-      - name: image.name
-        value: docker.io/vovka7surnyk/task-01
+      values: |
+        image:
+          tag: stg-0.0.7
+      # - name: image.tag
+      #   value: stg-0.0.7
+      #   # forcestring: true
+      # - name: image.name
+      #   value: docker.io/vovka7surnyk/task-01
         # forcestring: true  
           # - name: environment
         # value: staging
