@@ -4,5 +4,5 @@ helm:
     value: docker.io/vovka7surnyk/task-01
     forcestring: true
   - name: image.tag
-    value: 0.0.7
+    value: stg-0.0.7
     forcestring: true
