@@ -45,7 +45,7 @@ spec:
 
   destination: 
     server: https://kubernetes.default.svc
-    namespace: prod
+    namespace: argocd
 
   syncPolicy:
     syncOptions:
