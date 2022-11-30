@@ -24,10 +24,10 @@ spec:
     repoURL: https://github.com/vovka17surnyk/argohelm.git
     targetRevision: HEAD
     path: apps
-    # helm:
-    #   values: |
-    #     image:
-    #       tag: stg-0.0.7
+    helm:
+      values: |
+        image:
+          tag: stg-0.0.7
 
   destination: 
     server: https://kubernetes.default.svc
