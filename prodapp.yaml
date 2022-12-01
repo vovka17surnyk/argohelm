@@ -12,7 +12,7 @@ metadata:
     # notifications.argoproj.io/subscribe.on-deleted.slack: devops-internship-alerts
     # notifications.argoproj.io/subscribe.on-created.slack: devops-internship-alerts
     argocd-image-updater.argoproj.io/image-list: prod-argo-application=docker.io/vovka7surnyk/task-01
-    argocd-image-updater.argoproj.io/prod-argo-application.helm.image-name: image.name
+    argocd-image-updater.argoproj.io/prod-argo-application.helm.image-name: image.repository
     argocd-image-updater.argoproj.io/prod-argo-application.helm.image-tag: image.tag
     argocd-image-updater.argoproj.io/prod-argo-application.allow-tags: regexp:^stg-\d{1,2}\.\d{1,2}\.\d{1,2}$
     argocd-image-updater.argoproj.io/prod-argo-application.update-strategy: latest

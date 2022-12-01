@@ -1,2 +1,4 @@
 apps
 charts
+Chart-task-01
+.argocd-source-prod-argo-application.yaml
