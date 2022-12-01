@@ -36,7 +36,7 @@ spec:
           - values.yaml
       values: |
         image:
-          tag: stg-0.0.7
+          tag: 0.0.9
 
     repoURL: https://gitlab.com/api/v4/projects/40594299/packages/helm/stable
     targetRevision: 0.1.0
