@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: prod-argo-application
-  namespace: production
+  namespace: argocd
   annotations:
     # notifications.argoproj.io/subscribe.on-sync-succeeded.slack: devops-internship-alerts
     # notifications.argoproj.io/subscribe.on-sync-status-unknown.slack: devops-internship-alerts
@@ -12,8 +12,8 @@ metadata:
     # notifications.argoproj.io/subscribe.on-deleted.slack: devops-internship-alerts
     # notifications.argoproj.io/subscribe.on-created.slack: devops-internship-alerts
     argocd-image-updater.argoproj.io/image-list: prod-argo-application=docker.io/vovka7surnyk/task-01
-    argocd-image-updater.argoproj.io/prod-argo-application.helm.image-name: Chart-task-01.name
-    argocd-image-updater.argoproj.io/prod-argo-application.helm.image-tag: Chart-task-01.tag
+    # argocd-image-updater.argoproj.io/prod-argo-application.helm.image-name: Chart-task-01.name
+    # argocd-image-updater.argoproj.io/prod-argo-application.helm.image-tag: Chart-task-01.tag
     argocd-image-updater.argoproj.io/prod-argo-application.allow-tags: regexp:^stg-\d{1,2}\.\d{1,2}\.\d{1,2}$
     argocd-image-updater.argoproj.io/prod-argo-application.update-strategy: latest
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
@@ -46,7 +46,7 @@ spec:
 
   destination: 
     server: https://kubernetes.default.svc
-    namespace: production
+    namespace: argocd
 
   syncPolicy:
     syncOptions:
