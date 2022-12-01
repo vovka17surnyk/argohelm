@@ -11,7 +11,9 @@ metadata:
     # notifications.argoproj.io/subscribe.on-deployed.slack: devops-internship-alerts
     # notifications.argoproj.io/subscribe.on-deleted.slack: devops-internship-alerts
     # notifications.argoproj.io/subscribe.on-created.slack: devops-internship-alerts
-    argocd-image-updater.argoproj.io/image-list: prod-argo-application=docker.io/vovka7surnyk/task-01
+    # argocd-image-updater.argoproj.io/image-list: prod-argo-application=docker.io/vovka7surnyk/task-01
+    argocd-image-updater.argoproj.io/prod-argo-application.helm.image-name: prod-argo-application=Chart-task-01.image.name
+    argocd-image-updater.argoproj.io/prod-argo-application.helm.image-tag: prod-argo-application=Chart-task-01.image.tag
     argocd-image-updater.argoproj.io/prod-argo-application.allow-tags: regexp:^\d{1,2}\.\d{1,2}\.\d{1,2}$
     argocd-image-updater.argoproj.io/prod-argo-application.update-strategy: latest
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
