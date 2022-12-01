@@ -21,15 +21,26 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/vovka17surnyk/argohelm.git
-    targetRevision: HEAD
-    path: apps
+    # repoURL: https://github.com/vovka17surnyk/argohelm.git
+    # targetRevision: HEAD
+    # path: apps
+    # helm:
+    #   valueFiles:
+    #     - values.yaml
+    #   values: |
+    #     image:
+    #       tag: stg-0.0.7
+    chart: Chart-task-01
     helm:
       valueFiles:
-        - values.yaml
+          - values.yaml
       values: |
         image:
           tag: stg-0.0.7
+
+    repoURL: https://gitlab.com/api/v4/projects/40594299/packages/helm/stable
+    targetRevision: 0.1.0
+
 
   destination: 
     server: https://kubernetes.default.svc
