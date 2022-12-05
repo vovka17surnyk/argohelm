@@ -18,3 +18,8 @@ helm cm-push Chart-task-01-0.1.0.tgz  myargo_registry
 
 
 helm install prod-argo-application myargo_registry/Chart-task-01 -n argocd
+
+
+
+
+https://argocd-image-updater.readthedocs.io/en/stable/configuration/images/
